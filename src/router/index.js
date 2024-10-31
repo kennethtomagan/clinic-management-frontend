@@ -26,5 +26,20 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
 
+  // Navigation Guard for route protection
+  // Router.beforeEach((to, from, next) => {
+  //   const isAuthenticated = !!localStorage.getItem('token'); // Check if token exists in localStorage
+  //   if (!isAuthenticated && to.name != 'login') {
+  //     console.log('sadasda');
+  //     next('/login'); 
+  //   } else if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+  //     console.log('sadasda123');
+
+  //     next('/login'); // Redirect to login if not authenticated
+  //   } else {
+  //     next(); // Continue to the route
+  //   }
+  // });
+
   return Router
 })

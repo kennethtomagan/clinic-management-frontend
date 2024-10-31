@@ -45,6 +45,22 @@
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
+
+          <!-- The Dropdown Menu -->
+            <q-menu ref="menu" anchor="top right" self="top right" class="profile-dropdown">
+              <q-list>
+                <q-item clickable @click="goToProfile">
+                  <q-item-section>
+                    <q-item-label>Profile</q-item-label>
+                  </q-item-section>
+                </q-item>
+                <q-item clickable @click="logout">
+                  <q-item-section>
+                    <q-item-label>Logout</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
           </q-btn>
         </div>
       </q-toolbar>
@@ -57,6 +73,15 @@
       class="bg-primary text-white"
     >
       <q-list>
+        <q-item to="/patients/dashboard" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="dashboard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Patients Dashboard</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-item to="/" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="dashboard"/>
@@ -324,41 +349,55 @@
   </q-layout>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useQuasar } from 'quasar'
 import EssentialLink from 'components/EssentialLink.vue'
-import Messages from "./Messages.vue";
+import Messages from './Messages.vue'
+import { useUser } from 'stores/auth';
+import { useRouter } from 'vue-router'
 
-import {defineComponent, ref} from 'vue'
-import {useQuasar} from "quasar";
+const router = useRouter()
 
-export default defineComponent({
-  name: 'MainLayout',
+// State
+const leftDrawerOpen = ref(false)
+const $q = useQuasar()
+const storeUser = useUser();
 
-  components: {
-    EssentialLink,
-    Messages
-  },
+// Methods
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 
-  setup() {
-    const leftDrawerOpen = ref(false)
-    const $q = useQuasar()
+onMounted(() => {
+    storeUser.getAuthUser().then((user) => {
+        if (user.type == 'patient') {
+          // router.push({ name: 'patients.dashboard' })
+        }
+    }) 
+});
 
-    return {
-      $q,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+const logout = () => {
+  storeUser.logout().then((res) => {
+    router.push({ name: 'login' })
+  }).catch(error => {
+    router.push({ name: 'login' })
+  })
+};
+
 </script>
+
 
 <style>
 
 /* FONT AWESOME GENERIC BEAT */
 .fa-beat {
   animation: fa-beat 5s ease infinite;
+}
+.profile-dropdown {
+  margin-top: 2.4% !important;
+  background-color: var(--q-primary);
+  color: #fff;
 }
 
 @keyframes fa-beat {

@@ -1,8 +1,8 @@
 {
-  "name": "Quasar Admin",
+  "name": "Eye clinic management",
   "version": "0.0.1",
-  "description": "Quasar Admin",
-  "productName": "Quasar Admin",
+  "description": "Eye clinic management",
+  "productName": "Eye clinic management",
   "author": "pratikpatelpp802@gmail.com",
   "private": true,
   "scripts": {
@@ -12,8 +12,10 @@
     "@quasar/extras": "^1.16.12",
     "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.19",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "echarts": "^5.5.1",
     "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^4.1.1",
     "quasar": "^2.17.0",
     "vue": "^3.0.0",
     "vue-echarts": "^6.7.3",

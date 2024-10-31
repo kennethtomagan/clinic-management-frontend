@@ -59,7 +59,7 @@ import {defineComponent, defineAsyncComponent} from 'vue'
 const pricing_data = [
   {
     title: 'Basic',
-    price: '$0',
+    price: '',
     icon: 'home_work',
     background_image: 'linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%)',
     text: 'This is good if your company size is between 2 and 10 Persons.'
