@@ -24,9 +24,11 @@
     "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
+    "@electron/packager": "^18.3.5",
     "@intlify/vite-plugin-vue-i18n": "^3.4.0",
     "@quasar/app-vite": "^1.10.0",
     "autoprefixer": "^10.4.20",
+    "electron": "^33.0.2",
     "postcss": "^8.4.47",
     "quasar-app-extension-qhierarchy": "^1.0.15"
   },

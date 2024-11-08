@@ -11,7 +11,7 @@ const routes = [
         meta: { requiresAuth: true }
       },
 
-      {path: '/Dashboard2', component: () => import('src/pages/old/Dashboard2.vue')},
+      // {path: '/Dashboard2', component: () => import('src/pages/old/Dashboard2.vue')},
       {path: '/Profile', component: () => import('src/pages/old/UserProfile.vue')},
       {path: '/Map', component: () => import('src/pages/old/Map.vue')},
       {path: '/MapMarker', component: () => import('src/pages/old/MapMarker.vue')},
@@ -47,7 +47,7 @@ const routes = [
         meta: { requiresAuth: true }
       },
       {
-        path: 'book-apointment/:doctorId?/:doctorName?', 
+        path: 'book-apointment', 
         name: 'patients.book-apointment', 
         component: () => import('pages/patients/appointment/BookAppointment.vue'),
         meta: { requiresAuth: true }
@@ -64,6 +64,18 @@ const routes = [
         component: () => import('pages/patients/doctors/DoctorList.vue'),
         meta: { requiresAuth: true }
       },
+      {
+        path: 'notifications', 
+        name: 'patients.notifications', 
+        component: () => import('pages/patients/notification/Index.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'profile', 
+        name: 'patients.profile', 
+        component: () => import('pages/patients/profile/Index.vue'),
+        meta: { requiresAuth: true }
+      },
     ]
   },
 
@@ -71,7 +83,7 @@ const routes = [
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('src/pages/old/Error404.vue')
+    component: () => import('src/pages/404/Error404.vue')
   },
   {
     path: '/login',

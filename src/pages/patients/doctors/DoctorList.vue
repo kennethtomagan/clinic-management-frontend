@@ -82,9 +82,9 @@
 
             <q-space/>
 
-            <q-btn round flat icon="star_outline" color="yellow">
+            <!-- <q-btn round flat icon="star_outline" color="yellow">
             </q-btn>
-            <q-btn round flat icon="edit"/>
+            <q-btn round flat icon="edit"/> -->
 
           </q-toolbar>
           <q-separator></q-separator>

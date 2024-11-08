@@ -343,7 +343,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="bg-grey-2">
+    <q-page-container class="bg-grey-2" v-if="!loading">
       <router-view/>
     </q-page-container>
   </q-layout>
@@ -361,6 +361,7 @@ const router = useRouter()
 
 // State
 const leftDrawerOpen = ref(false)
+const loading = ref(false)
 const $q = useQuasar()
 const storeUser = useUser();
 
@@ -370,9 +371,11 @@ const toggleLeftDrawer = () => {
 }
 
 onMounted(() => {
+    loading.value = true;
     storeUser.getAuthUser().then((user) => {
+        loading.value = false;
         if (user.type == 'patient') {
-          // router.push({ name: 'patients.dashboard' })
+          router.push({ name: 'patients.dashboard' })
         }
     }) 
 });

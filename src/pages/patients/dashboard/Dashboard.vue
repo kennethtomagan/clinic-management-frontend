@@ -99,7 +99,7 @@ const pricing_data = [
   },
   {
     title: 'Check Notification',
-    routeName: null,
+    routeName: 'patients.notifications',
     icon: 'notifications',
     background_image: 'linear-gradient(to right, #2B86C5 0%, #2B86C5 100%)',
     text: 'View recent notifications.'

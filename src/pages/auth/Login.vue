@@ -27,14 +27,21 @@
               />
 
               <q-input
-                type="password"
                 filled
                 v-model="form.password"
                 label="Password"
                 lazy-rules
                 :error="!!errors.password"
                 :error-message="errors.password?.[0]"
-              />
+                :type="showPassword ? 'password' : 'text'">
+                <template v-slot:append>
+                    <q-icon
+                    :name="showPassword ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="showPassword = !showPassword"
+                    />
+                </template>
+              </q-input>
 
               <!-- General error message (e.g., for authentication errors) -->
               <div v-if="errors.general" class="text-negative text-center q-mt-md">
@@ -74,6 +81,7 @@ const router = useRouter()
 const storeUser = useUser()
 const form = reactive({ email: 'register@test.com', password: 'admin123' })
 const processingForm = ref(false)
+const showPassword = ref(true)
 
 // Define a reactive object to store errors
 const errors = reactive({

@@ -14,18 +14,34 @@
         color="white"
         text-color="blue"
         unelevated
-        to="/"
+        @click="gotoHomePage"
         label="Go Home"
         no-caps
       />
+
     </div>
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { reactive, ref } from 'vue'
+import { useUser } from 'stores/auth'
+import { useRouter } from 'vue-router'
 
-export default defineComponent({
-  name: 'Error404'
-})
+const router = useRouter()
+const storeUser = useUser()
+
+const gotoHomePage = () => {
+    storeUser.getAuthUser().then((user) => {
+        if (user.type == 'patient') {
+          router.push({ name: 'patients.dashboard' })
+        } else {
+          router.push({ name: 'dashboard' })
+        }
+    }).catch(error => {
+        router.push({ name: 'login' })
+  })
+}
+
+
 </script>

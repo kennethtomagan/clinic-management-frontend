@@ -43,7 +43,8 @@
           </q-btn> -->
           <q-btn round flat>
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+              <!-- <img src="https://cdn.quasar.dev/img/boy-avatar.png"> -->
+              <img :src="profile.profile_image" v-if="profile.profile_image">
             </q-avatar>
 
           <!-- The Dropdown Menu -->
@@ -51,7 +52,7 @@
               <q-list>
                 <q-item clickable @click="goToProfile">
                   <q-item-section>
-                    <q-item-label>Profile</q-item-label>
+                    <q-item-label @click="goToProfile">Profile</q-item-label>
                   </q-item-section>
                 </q-item>
                 <q-item clickable @click="logout">
@@ -109,6 +110,24 @@
           </q-item-section>
         </q-item>
 
+        <q-item to="/patients/notifications" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="notifications"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Notifications</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item to="/patients/profile" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="person"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Profile</q-item-label>
+          </q-item-section>
+        </q-item>
+
       </q-list>
     </q-drawer>
 
@@ -143,6 +162,7 @@ const route = useRoute()
 const leftDrawerOpen = ref(false)
 const $q = useQuasar()
 const storeUser = useUser();
+const profile = storeUser.currentUser;
 
 const isPatientsDashboard = computed(() => {
   return route.name === 'patients.dashboard' || route.path === '/patients/dashboard'
@@ -161,6 +181,10 @@ const logout = () => {
   storeUser.logout().then((res) => {
     router.push({ name: 'login' })
   })
+};
+
+const goToProfile = () => {
+    router.push({ name: 'patients.profile' })
 };
 
 

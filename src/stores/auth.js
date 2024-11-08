@@ -71,11 +71,33 @@ export const useUser = defineStore('user', () => {
         }
     };
     
+    const updateUserProfile = async (formData) => {
+        try {
+            return await axios.post(currentUserUrl + '/profile',  formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+            });
+        } catch (error) {
+            throw error.response.data;
+        }
+    };
+
+    const updateUserPassword = async (formData) => {
+        try {
+            return await axios.post(currentUserUrl + '/update-password',  formData);
+        } catch (error) {
+            throw error.response.data;
+        }
+    };
+
     return {
         currentUser,
         loginAction,
         registerAction,
         getAuthUser,
-        logout
+        logout,
+        updateUserProfile,
+        updateUserPassword
     };
 });

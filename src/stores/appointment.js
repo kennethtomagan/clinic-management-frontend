@@ -5,6 +5,7 @@ import { reactive, ref } from 'vue';
 export const useAppointment = defineStore('appointment', () => {
     const bookAppointmentUrl = process.env.API_URL + 'api/book-appointment';
     const appointmentsUrl = process.env.API_URL + 'api/appointments';
+    const appointmentsLogsUrl = process.env.API_URL + 'api/appointments/logs';
 
     const bookAppointment = async (data) => {
         try {
@@ -31,9 +32,19 @@ export const useAppointment = defineStore('appointment', () => {
             throw error.response.data;
         }
     };
+
+    const appontmentLogs = async () => {
+        try {
+            return await axios.get(appointmentsLogsUrl);
+        } catch (error) {
+            throw error.response.data;
+        }
+    };
+
     return {
         bookAppointment,
         getAppointments,
-        cancelAppointment
+        cancelAppointment,
+        appontmentLogs
     };
 });
