@@ -31,6 +31,9 @@ export default defineComponent({
     icon_position: {
       required: false,
       default: "left"
+    },
+    counts:  {
+      required: true,
     }
   },
   computed: {
@@ -39,28 +42,29 @@ export default defineComponent({
           {
             title: "Doctors",
             icon: "medical_services",
-            value: "200",
+            value: this.counts.doctors,
+            color1: "#f37169",
             color1: "#5064b5",
             color2: "#3e51b5"
           },
           {
-            title: "Followers",
+            title: "Patients",
             icon: "people",
-            value: "500",
+            value: this.counts.patients,
             color1: "#f37169",
             color2: "#f34636"
           },
           {
-            title: "Employee",
+            title: "Products",
             icon: "badge",
-            value: "50",
+            value: this.counts.products,
             color1: "#ea6a7f",
             color2: "#ea4b64"
           },
           {
             title: "Appointment",
             icon: "event",
-            value: "1020",
+            value: this.counts.appointments,
             color1: "#a270b1",
             color2: "#9f52b1"
           }
