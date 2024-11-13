@@ -71,6 +71,7 @@
       show-if-above
       bordered
       class="bg-primary text-white"
+       v-if="false"
     >
       <q-list>
         <q-item to="/patients/dashboard" active-class="q-item-no-link-highlighting">
@@ -81,6 +82,15 @@
             <q-item-label>Patients Dashboard</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/admin/dashboard" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="dashboard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Admin Dashboard</q-item-label>
+          </q-item-section>
+        </q-item>
+
 
         <q-item to="/" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
@@ -376,7 +386,11 @@ onMounted(() => {
         loading.value = false;
         if (user.type == 'patient') {
           router.push({ name: 'patients.dashboard' })
+        } else {
+          router.push({ name: 'admin.dashboard' })
         }
+    loading.value = false;
+
     }) 
 });
 

@@ -34,6 +34,75 @@ const routes = [
     ]
   },
 
+  {
+    path: '/admin',
+    component: () => import('layouts/AdminLayout.vue'),
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'dashboard', 
+        name: 'admin.dashboard', 
+        component: () => import('pages/admin/dashboard/Dashboard.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'patients', 
+        name: 'admin.patients', 
+        component: () => import('pages/admin/patients/Patients.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'patients/add',  
+        name: 'admin.patients.add', 
+        component: () => import('pages/admin/patients/AddPatient.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'patients/:id',  
+        name: 'admin.patients.edit', 
+        component: () => import('pages/admin/patients/ShowPatient.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'doctors', 
+        name: 'admin.doctors', 
+        component: () => import('pages/admin/doctors/DoctorList.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'doctors/add',  
+        name: 'admin.doctors.add', 
+        component: () => import('pages/admin/doctors/AddDoctor.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'doctors/:id',  
+        name: 'admin.doctors.edit', 
+        component: () => import('pages/admin/doctors/EditDoctor.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'products', 
+        name: 'admin.products', 
+        component: () => import('pages/admin/products/ProductList.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'products/add', 
+        name: 'admin.products.add', 
+        component: () => import('pages/admin/products/AddProduct.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'products/:id',  
+        name: 'admin.products.edit', 
+        component: () => import('pages/admin/products/EditProduct.vue'),
+        meta: { requiresAuth: true }
+      },
+
+    ]
+  },
+
 
   {
     path: '/patients',

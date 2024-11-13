@@ -19,7 +19,7 @@
             <q-form class="q-gutter-md" v-if="!isRegistered">
 
               <q-input
-                filled
+                dense outlined
                 v-model="form.first_name"
                 label="First name"
                 lazy-rules
@@ -29,7 +29,7 @@
               />
 
               <q-input
-                filled
+                dense outlined
                 v-model="form.last_name"
                 label="Last name"
                 lazy-rules
@@ -44,13 +44,13 @@
                 :options="['Male', 'Female']"
                 label="Gender" 
                 lazy-rules
-                filled
+                dense outlined
                 :error="!!errors.gender"
                 :error-message="errors.gender?.[0]"
                 @change="errors.gender = null"
             />
             <q-input 
-                filled 
+                dense outlined 
                 v-model="form.date_of_birth" 
                 mask="date" 
                 :rules="['date']"
@@ -75,7 +75,7 @@
                 v-model="form.phone"
                 label="Phone Number"
                 mask="#### ### ####"
-                filled
+                dense outlined
                 prepend="🇵🇭 +63"
                 hint="Format: XXXX XXX XXXX"
                 :rules="[val => val.length === 13 || 'Please enter a valid phone number']"
@@ -89,7 +89,7 @@
             </q-input>
 
               <q-input
-                filled
+                dense outlined
                 v-model="form.address"
                 label="Address"
                 lazy-rules
@@ -99,7 +99,7 @@
               />
 
               <q-input
-                filled
+                dense outlined
                 v-model="form.email"
                 label="email"
                 lazy-rules
@@ -114,7 +114,7 @@
                 :error-message="errors.password?.[0]"
                 @change="errors.password = null"
                 label="Password"
-                filled 
+                dense outlined 
                 :type="showPassword ? 'password' : 'text'">
                 <template v-slot:append>
                     <q-icon
@@ -128,7 +128,7 @@
             <q-input 
                 v-model="form.confirm_password" 
                 label="Confirm Password"
-                filled 
+                dense outlined 
                 :error="!!errors.confirm_password"
                 :error-message="errors.confirm_password?.[0]"
                 @change="errors.confirm_password = null"

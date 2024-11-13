@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Quasar Admin</string>
-    <string name="title_activity_main">Quasar Admin</string>
-    <string name="package_name">clinic.management.app</string>
-    <string name="custom_url_scheme">clinic.management.app</string>
-</resources>

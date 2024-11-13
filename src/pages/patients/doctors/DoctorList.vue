@@ -275,7 +275,7 @@ const bookAppointment = () => {
 const fetchDoctor = () => {
     doctors.value = [];
 
-    storeDoctor.getAllDoctors().then((response) => {
+    storeDoctor.getActiveDoctors().then((response) => {
         doctors.value = response.data.data;
         // selected_doctor.value = doctors.value[0]
     })
