@@ -118,7 +118,7 @@
                   </template>
                 </q-input>
               </q-item-label>
-              <q-item-label header class="text-center">{{ doctors.length }} CONTACTS</q-item-label>
+              <q-item-label header class="text-center">{{ doctors.length }} Doctors</q-item-label>
 
               <span v-for="(doctor, index) in doctors" :key="index" @click="selected_doctor=doctor">
                 <contact-item
