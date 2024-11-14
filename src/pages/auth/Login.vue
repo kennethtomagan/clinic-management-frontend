@@ -79,7 +79,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const storeUser = useUser()
-const form = reactive({ email: 'register@test.com', password: 'admin123' })
+const form = reactive({ email: null , password: null })
 const processingForm = ref(false)
 const showPassword = ref(true)
 
